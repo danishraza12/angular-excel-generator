@@ -38,8 +38,8 @@ export class ExportExcelService {
     // Date
     worksheet.mergeCells('A1:B1');
     let d = new Date();
-    let fromDate = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
-    let toDate = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+    let fromDate = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+    let toDate = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
     let dateCell = worksheet.getCell('A1');
     
     dateCell.value = "Report For: "  + fromDate + " - " + toDate;

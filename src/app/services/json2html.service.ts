@@ -1,0 +1,65 @@
+import { ElementRef, Injectable, ViewChild } from '@angular/core';
+import { AppComponent } from '../app.component';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class Json2htmlService {
+
+  constructor() { }
+
+  json2Html(data: any, mytable: any) {
+    console.log("JSON to html");
+
+    let cols = [];
+             
+    for (let i = 0; i < data.length; i++) {
+      for (let k in data[i]) {
+        if (cols.indexOf(k) === -1) {
+          // Push all keys to the array
+          cols.push(k);
+        }
+      }
+    }
+
+    // Create a table element
+    var table = document.createElement("table");
+             
+    // Create table row tr element of a table
+    var tr = table.insertRow(-1);
+     
+    for (var i = 0; i < cols.length; i++) {
+      // Create the table header th element
+      var theader = document.createElement("th");
+      theader.setAttribute('style', "border: 1px solid black; border-collapse: collapse");
+
+      theader.innerHTML = cols[i];
+        
+      // Append columnName to the table row
+      tr.appendChild(theader);
+    }
+     
+    // Adding the data to the table
+    for (var i = 0; i < data.length; i++) {
+      // Create a new row
+      let trow = table.insertRow(-1);
+      for (var j = 0; j < cols.length; j++) {
+        var cell = trow.insertCell(-1);
+        cell.setAttribute('style', "border: 1px solid black; border-collapse: collapse");
+          
+        // Inserting the cell at particular place
+        cell.innerHTML = data[i][cols[j]];
+      }
+    }
+     
+    // Add the newly created table containing json data
+    // let el = document.getElementById("table");
+    // el!.innerHTML = "";
+    // el!.appendChild(table);
+
+
+    mytable.nativeElement.innerHTML = "";
+    mytable.nativeElement.appendChild(table);
+    // console.log(el?.innerText);
+  }
+}

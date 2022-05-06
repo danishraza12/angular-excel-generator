@@ -21,6 +21,7 @@ export class Json2htmlService {
 
     // Create a table element
     var table = document.createElement("table");
+    table.setAttribute('style', "border-collapse: collapse;")
              
     // Create table row tr element of a table
     var tr = table.insertRow(-1);
@@ -28,7 +29,9 @@ export class Json2htmlService {
     for (var i = 0; i < cols.length; i++) {
       // Create the table header th element
       var theader = document.createElement("th");
-      theader.setAttribute('style', "border: 1px solid black; border-collapse: collapse");
+      theader.setAttribute('style', "border: 1px solid black;");
+      theader.setAttribute('style', theader.getAttribute('style')+'; color: blue');
+
       theader.innerHTML = cols[i];
       // Append columnName to the table row
       tr.appendChild(theader);
@@ -40,7 +43,7 @@ export class Json2htmlService {
       let trow = table.insertRow(-1);
       for (var j = 0; j < cols.length; j++) {
         var cell = trow.insertCell(-1);
-        cell.setAttribute('style', "border: 1px solid black; border-collapse: collapse");
+        cell.setAttribute('style', "border: 1px solid black;");
         // Inserting the cell at particular place
         cell.innerHTML = data[i][cols[j]];
       }

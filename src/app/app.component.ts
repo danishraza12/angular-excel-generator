@@ -37,10 +37,11 @@ export class AppComponent {
       })
       
       for (let i=0;i<arr.length;i++) {
-        if (this.dataForExcel?.[prop]) {
+        if (this.dataForExcel?.[prop]) { // if prop exists so just push
           this.dataForExcel[prop].push(arr[i])
         }
         else {
+          // Create dynamic property if prop does not exist
           this.dataForExcel = { ...this.dataForExcel, [prop]: [] };
           this.dataForExcel[prop].push(arr[i]);
         }

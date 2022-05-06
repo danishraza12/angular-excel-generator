@@ -555,32 +555,32 @@ export class AppComponent {
              "employmenttypedesc": ""
           }
        ],
-      //  table_2: [
-      //     {
-      //        "employeeindex": 0,
-      //        "clientindex": "0",
-      //        "clientname": "",
-      //        "buname": "",
-      //        "employeename": "",
-      //        "gradename": null,
-      //        "designationname": "",
-      //        "atId": "0",
-      //        "approvalGroupEmploymentType": null,
-      //        "clientBranchName": ""
-      //     },
-      //     {
-      //        "employeeindex": 300000001,
-      //        "clientindex": "300000001",
-      //        "clientname": "HRSG BPO",
-      //        "buname": "HRSG BPO",
-      //        "employeename": "Umair Ahmed Bukhari",
-      //        "gradename": null,
-      //        "designationname": "",
-      //        "atId": "0",
-      //        "approvalGroupEmploymentType": null,
-      //        "clientBranchName": ""
-      //     }
-      //  ] 
+       table_2: [
+          {
+             "employeeindex": 0,
+             "clientindex": "0",
+             "clientname": "",
+             "buname": "",
+             "employeename": "",
+             "gradename": null,
+             "designationname": "",
+             "atId": "0",
+             "approvalGroupEmploymentType": null,
+             "clientBranchName": ""
+          },
+          {
+             "employeeindex": 300000001,
+             "clientindex": "300000001",
+             "clientname": "HRSG BPO",
+             "buname": "HRSG BPO",
+             "employeename": "Umair Ahmed Bukhari",
+             "gradename": null,
+             "designationname": "",
+             "atId": "0",
+             "approvalGroupEmploymentType": "test",
+             "clientBranchName": ""
+          }
+       ]
     },
     "header": {
        "code": 0,
@@ -623,30 +623,21 @@ export class AppComponent {
       let arr:any = []
 
       obj.forEach((row: any) => {
-        // console.log(row)
         arr.push(Object.values(row))
       })
       
-      // console.log(arr)
       for (let i=0;i<arr.length;i++) {
         if (this.dataForExcel?.[prop]) {
-          console.log("inside if")
-          console.log(arr[i])
           this.dataForExcel[prop].push(arr[i])
         }
         else {
-          console.log("inside else")
-          console.log(arr[i])
           this.dataForExcel = { ...this.dataForExcel, [prop]: [] };
           this.dataForExcel[prop].push(arr[i]);
         }
       }
-      console.log(this.dataForExcel)
 
       headers.push(Object.keys(this.empPerformance?.body?.[prop]?.[0]));
     }
-    // console.log(this.dataForExcel);
-    // console.log(headers);
 
     let reportData = {
       title: 'Employee Sales Report - Jan 2020',

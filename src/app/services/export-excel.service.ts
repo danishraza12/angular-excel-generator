@@ -101,17 +101,17 @@ export class ExportExcelService {
         let row = worksheet.addRow(d);
         row.alignment = { vertical: 'middle', horizontal: 'center' }
 
-        let dCell = row.getCell(6);
-        let color = 'FF99FF99';
+        // let dCell = row.getCell(6);
+        // let color = 'FF99FF99';
         // if (dCell?.value! < 200000) {
         //   color = 'FF9999'
         // }
 
-        dCell.fill = {
-          type: 'pattern',
-          pattern: 'solid',
-          fgColor: { argb: color }
-        }
+        // dCell.fill = {
+        //   type: 'pattern',
+        //   pattern: 'solid',
+        //   fgColor: { argb: color }
+        // }
       });
 
       // worksheet.getColumn(3).width = 20;
